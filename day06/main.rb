@@ -1,3 +1,5 @@
+require "parallel"
+
 def pfish(fish)
   fish.each_with_index do |f, i|
     print "#{f}"
@@ -12,16 +14,25 @@ def update(fish)
   return after
 end
 
-require "parallel"
+def paralle_update(fishies, days)
+  fishies = Parallel.map(fishies, in_process: 8) do |fish|
+    day = 0
+    fish = [fish]
+    loop do
+      break if day == days
+      fish = update(fish)
+      day += 1
+    end
+    fish
+  end
+  fishies.flatten
+end
 
 line = gets
-fish = line.chomp.split(",").map(&:to_i)
-days = 0
-loop do
-  printf "%2d ", days
-  #pfish(fish)
-  break if days == 256
-  fish = update(fish)
-  days += 1
+fishies = line.chomp.split(",").map(&:to_i)
+days = 256
+para = 4
+para.times do
+  fishies = paralle_update(fishies, days/para)
+  p fishies.size
 end
-p fish.size
