@@ -29,7 +29,7 @@ def createMap(coords)
   end
   return map
 end
-p coords = File.read("day05_input_test.txt").scan(/(\d+),(\d+)/).map {|l| l.map(&:to_i) }
+p coords = File.read("day05_input.txt").scan(/(\d+),(\d+)/).map {|l| l.map(&:to_i) }
 map = createMap(coords)
 pp map
 p map.flatten.select {|n| n >= 2 }.size
