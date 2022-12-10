@@ -44,24 +44,22 @@ def solve1(_stacks, moves):
   stacks = copy.deepcopy(_stacks)
   for move in moves:
     num_crate, from_stack, to_stack = move
-    print(num_crate, from_stack, to_stack)
     for i in range(num_crate):
       crate = stacks[from_stack].pop()
       stacks[to_stack].append(crate)
-      print(stacks)
+      #print(stacks)
   print(''.join([stack.pop() for stack in stacks]))
 
 def solve2(_stacks, moves):
   stacks = copy.deepcopy(_stacks)
   for move in moves:
     num_crate, from_stack, to_stack = move
-    print(num_crate, from_stack, to_stack)
     crates = []
     for i in range(num_crate):
       crates.append(stacks[from_stack].pop())
     for i in range(num_crate):
       stacks[to_stack].append(crates.pop())
-      print(stacks)
+      #print(stacks)
   print(''.join([stack.pop() for stack in stacks]))
 
 ## main ##
@@ -72,15 +70,13 @@ print(inputs)
 lines = inputs.split('\n')
 
 num_crate, stack_str, move_str = parse(lines)
-print(num_crate)
-#print(stack_str)
-#print(move_str)
+#print(num_crate)
 
 stacks = parse_stack(num_crate, stack_str)
-print(stacks)
+#print(stacks)
 
 moves = parse_move(move_str)
-print(moves)
+#print(moves)
 
 solve1(stacks, moves)
 solve2(stacks, moves)
