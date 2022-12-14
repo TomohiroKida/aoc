@@ -1,14 +1,15 @@
 import sys
 
+def main():
+  lines = open(sys.argv[1], "r").read().strip().split('\n')
+  print(lines)
+  print(solve1(lines))
+  print(solve2(lines))
+
 def solve1():
   pass
 def solve2():
   pass
 
-with open(sys.argv[1], "r") as f:
-  inputs = f.read()
-lines = inputs.strip().split('\n')
-print(lines)
-
-solve1()
-solve2()
+if __name__ == "__main__":
+    main()
