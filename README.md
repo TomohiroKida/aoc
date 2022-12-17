@@ -1,7 +1,8 @@
-advent of code
+# advent of code
 
-2021, ruby, python
-2022, python
+- 2021, ruby, python
+- 2022, python
+- xxxx is template
 
 # how to run ruby
 require "parallel"
