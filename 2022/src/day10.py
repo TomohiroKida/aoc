@@ -52,16 +52,35 @@ def solve1(lines):
   while True:
     clk += 1
     ret = cpu.step()
+    print('clk: ', clk)
+    cpu.dump()
     if clk in [20, 60, 100, 140, 180, 220]:
-      print(clk)
-      cpu.dump()
       sig += cpu.retx() * clk
     if not ret:
       break
   return sig
 
 def solve2(lines):
-  pass
+  print('solve2')
+  instructs = [l.split(' ') for l in lines]
+  cpu = CPU(instructs)
+  pos = ''
+  while True:
+    for i in range(40):
+      ret = cpu.step()
+      if not ret:
+        break
+      x = cpu.retx()
+      #print(i, x)
+      if i in [x-1, x, x+1]:
+        pos = '#'
+      else:
+        pos = ' '
+      print(pos, end='')
+    print()
+    if not ret:
+      break
+  return 0
 
 if __name__ == "__main__":
     main()
