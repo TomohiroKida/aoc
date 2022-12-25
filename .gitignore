@@ -2,3 +2,6 @@ vendor/
 .bundle/
 *.dSYM/
 a.out
+
+venv/
+mylibs.egg-info/
