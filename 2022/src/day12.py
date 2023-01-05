@@ -1,60 +1,12 @@
 import sys
 import string
-from dataclasses import dataclass, field
+from mylibs.graph import Grid, Point, bfsearch
 
 def main():
   lines = open(sys.argv[1], "r").read().strip().split('\n')
   for line in lines: print(line)
   print(solve1(lines))
   print(solve2(lines))
-
-
-@dataclass
-class Point:
-  x: int = 0
-  y: int = 0
-  value: int = 0
-
-
-@dataclass
-class Grid:
-  grid: list[list[Point]] 
-
-  def find_outofrange(self, x, y) -> bool:
-    if x < 0 or x > len(self.grid)-1:
-      return True
-    if y < 0 or y > len(self.grid[x])-1:
-      return True
-    return False
-
-  def find_neighbors(self, node: Point) -> list[Point]:
-    x: int = node.x
-    y: int = node.y
-    neighbors: list[Point] = []
-    for (nx, ny) in (x-1, y), (x+1, y), (x, y-1), (x, y+1):
-      if not self.find_outofrange(nx, ny): 
-        neighbors.append(self.grid[nx][ny])
-    return neighbors
-
-
-def bfsearch(grid: Grid, start: Point, end: Point, find_func) -> list[Point]:
-  que: list[Point] = [[start]]
-  visited: list[Point] = []
-  while que: 
-    path: Point = que.pop(0)
-    node: Point = path[-1]
-
-    if node == end:
-      return path
-
-    if node not in visited:
-      visited.append(node)
-      for neighbor in grid.find_neighbors(node):
-        if find_func(node.value, neighbor.value):
-          que.append(path+[neighbor])
-
-  return None
-
 
 # S=0
 # a-z=1-26
@@ -73,25 +25,39 @@ def toGrid(lines):
 
 def solve1(lines):
   g = toGrid(lines)
+  start = None
+  ends = None
   for l in g.grid:
     for p in l:
       if p.value == 0:
-        s = p
-      elif p.value == 27:
-        e = p
+        start = p
+      if p.value == 27:
+        end = p
+        at_end = lambda node: node == end
         p.value = 26
   #s = next((p for l in g.grid for p in l if p.value == 0), None)
   #e = next((p for l in g.grid for p in l if p.value == 27), None)
   #print(g, s, e)
-  ps = bfsearch(g, s, e, lambda a, b: a+1 >=  b)
+  ps = bfsearch(g, start, at_end, lambda src, dst: src+1 >= dst)
   #print([p for p in ps])
-  #print(''.join([chr(p.value+96) for p in ps]))
+  print(''.join([chr(p.value+96) for p in ps]))
   return len(ps)-1
 
-def solve2(grid):
-  pass
+def solve2(lines):
+  g = toGrid(lines)
+  start = None
+  ends = []
+  for l in g.grid:
+    for p in l:
+      if p.value == 27:
+        start = p
+        p.value = 26
+      if p.value == 1:
+        ends.append(p)
+        at_end = lambda node: node in ends
+  ps = bfsearch(g, start, at_end, lambda src, dst: src <= dst+1)
+  print(''.join([chr(p.value+96) for p in ps]))
+  return len(ps)-1
 
 if __name__ == "__main__":
     main()
-
-
