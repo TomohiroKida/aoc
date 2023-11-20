@@ -1,8 +1,9 @@
 # advent of code
 
-- 2021, ruby, python
-- 2022, python
-- xxxx is template
+- ruby
+  - 2021
+- python
+  - 2022
 
 # how to run python
 ```

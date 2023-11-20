@@ -1,8 +1,10 @@
-__pycache__
+#ruby
 vendor/
 .bundle/
 *.dSYM/
 a.out
 
+#python
+__pycache__
 venv/
 mylibs.egg-info/
