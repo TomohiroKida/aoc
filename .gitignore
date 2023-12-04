@@ -6,5 +6,6 @@ a.out
 
 #python
 __pycache__
-venv/
-mylibs.egg-info/
+
+#rust
+target/

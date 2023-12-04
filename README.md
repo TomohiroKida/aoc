@@ -1,16 +1,12 @@
 # advent of code
 
+- [adventofcode](https://adventofcode.com)
+- [r/adventofcode](https://www.reddit.com/r/adventofcode)
+
 - ruby
   - 2021
 - python
   - 2022
-
-# how to run python
-```
-python3 setup.py develop
-source ./venv/bin/activate
-# deactivate
-```
 
 # how to run ruby
 ```
