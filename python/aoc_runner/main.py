@@ -14,10 +14,10 @@ def main():
     part = sys.argv[3]
 
     if len(sys.argv) == 4:
-        file_path = "../data/{}/day{}_input.txt".format(year, day)
-    elif len(sys.argv) == 5:
+        file_path = "../data/{}/{}_input.txt".format(year, day)
+    else:
         test = sys.argv[4]
-        file_path = "../data/{}/day{}_input_{}.txt".format(year, day, test)
+        file_path = "../data/{}/{}_input_{}.txt".format(year, day, test)
 
     if not (os.path.isfile(file_path)):
         print("{} is no exist".format(file_path))

@@ -5,7 +5,8 @@
 - gpg -o YYYY.tar.xz -d YYYY.tar.xz.asc
 - tar xf YYYY.tar.xz
 
-# data file name
-- dayDD_input.txt
-- dayDD_input_test.txt
-- dayDD_input_test1.txt
+# data directory tree
+- ./data/
+-- YYYY/
+--- DD_input_test_N.txt
+--- DD_input.txt
