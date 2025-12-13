@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case $1 in
+  run)
+    python3 aoc.py ${@:2}
+    ;;
+  test)
+    [[ $# == 3 ]] && python3 -m unittest y$2.day$3
+    [[ $# == 4 ]] && python3 -m unittest y$2.day$3.TestSolution.test_part$4
+    ;;
+  *)
+    echo "$0 test [year] [day] [part]"
+    echo "$0 run [year] [day] [part]"
+    ;;
+esac
