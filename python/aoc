@@ -1,6 +1,9 @@
 #!/bin/bash
 
 case $1 in
+  make)
+    [[ $# == 3 ]] && [[ ! -f y$2/day$3.py ]] && cp y$2/day00.py y$2/day$3.py
+    ;;
   run)
     python3 aoc.py ${@:2}
     ;;
