@@ -16,11 +16,9 @@ def print_state(state: list[list[str]]):
     print()
 
 
-area = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-
-
 def remove_roll(state: list[list[str]]) -> list[list[str]]:
     height, width = len(state), len(state[0])
+    area = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
     for row in range(height):
         for col in range(width):
@@ -34,11 +32,10 @@ def remove_roll(state: list[list[str]]) -> list[list[str]]:
                 if 0 <= n_row < height and 0 <= n_col < width:
                     if state[n_row][n_col] == "@":
                         cnt += 1
-            
+
             if cnt < 4:
                 state[row][col] = "x"
-                
-                
+
     return state
 
 
