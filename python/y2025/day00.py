@@ -1,37 +1,47 @@
 #!/usr/bin/env python3
 import sys
 
+
 # *** SOLUTIONS ***
 def parse(input_puzzle: str):
-  None
+    None
+
 
 def part1(input_data: str):
-  None
+    None
+
 
 def part2(input_data: str):
-  None
+    None
 
 
 # *** TESTCASE ***
 import unittest
+
+
 class TestSolution(unittest.TestCase):
-  def test_part1(self):
-    input_str, exp = (
-"""
-""", None)
-    self.assertIsNotNone(exp)
+    def test_part1(self):
+        input_str, exp = (
+            """
+""",
+            None,
+        )
+        self.assertIsNotNone(exp)
 
-    act = part1(input_str)
-    self.assertEqual(exp, act)
+        act = part1(input_str.strip('\n\r'))
+        self.assertEqual(exp, act)
 
-  def test_part2(self):
-    input_str, exp = (
-"""
-""", None)
-    self.assertIsNotNone(exp)
+    def test_part2(self):
+        input_str, exp = (
+            """
+""",
+            None,
+        )
+        self.assertIsNotNone(exp)
 
-    act = part2(input_str)
-    self.assertEqual(exp, act)
+        act = part2(input_str.strip('\n\r'))
+        self.assertEqual(exp, act)
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()
